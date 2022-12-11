@@ -5,6 +5,7 @@
     gap: 0.5rem;
 }
 
+
 .todoBox > textarea {
     border-style: none;
     resize: none;
@@ -31,3 +32,55 @@
     font-size: 0.875rem;
 }
 
+main {
+    margin-top: 3.688rem;
+}
+
+.lisTodos {
+    margin-top: 1.5rem;
+}
+
+.monitorTodos {
+    height: 1.188rem;
+    color: white;
+    font-size: 0.8rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.tasksCreated {
+    font-weight: 400;
+    color: var(--blue-100);
+}
+
+.tasksCreated span {
+    margin-left: 0.5rem;
+    width: 1.5rem;
+    height: 1.188rem;
+    padding: 0.125rem 0.5rem;
+    margin-left: 0.313rem;
+    font-size: 0.75rem;
+    background-color: var(--gray-400);
+    color: white;
+    border-radius: 10px;
+}
+
+.tasksDone {
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.063rem;
+    color: var(--purple-100);
+}
+
+.tasksDone span {
+    margin-left: 0.5rem;
+    width: 3.25rem;
+    height: 1.188rem;
+    font-size:0.75rem;
+    padding: 0.125rem 0.5rem;
+    line-height: 0.938rem;
+    background-color: var(--gray-400);
+    color:var(--gray-200);
+    border-radius: 10px;
+}
