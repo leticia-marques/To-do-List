@@ -9,6 +9,7 @@
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
 
     display:flex;
+    align-items: center;
 }
 
 .todoContent {
@@ -19,43 +20,38 @@
     margin: 1rem 12px 1rem 16px;
     gap: 0.75rem;
 }
-.todoContent input {
+/* .todoContent input {
     background-color: aqua;
     border-radius: 100%;
-}
+} */
+
 .todo > button {
-    color: var(--gray-300);
+    width: 1.5rem;
+    height:1.5rem;
     background: transparent;
+    color: var(--gray-300);
     border: 0;
     line-height: 0;
     margin-right: 1rem;
     border-radius: 4px;
+    order: 2;
 }
+
+.todo > button:hover {
+    color: var(--red-300);
+    transform: scale(1);
+    background-color: var(--gray-400);
+}
+
 .todo > div {
     flex-grow: 1;
 }
 
-.checkUndone {
-    background-color: aquamarine;
-}
-
-/* .todo span {
-    color: var(--gray-100);
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 140%;
-}
-
-
-
-.todo input:checked + span {
-    text-decoration: line-through;
-    color: var(--gray-300);
-} */
-
 .done {
     text-decoration: line-through;
     color: var(--gray-300);
+    font-size: 0.875rem;
+    transition: all 0.50s ease-out
 }
 
 .undone {
@@ -63,4 +59,5 @@
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 140%;
+    transition: all 0.50s ease-out
 }

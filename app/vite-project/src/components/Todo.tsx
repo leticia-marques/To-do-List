@@ -7,39 +7,63 @@ import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutli
 import RadioButtonUncheckedRoundedIcon from '@mui/icons-material/RadioButtonUncheckedRounded';
 import { ChangeEvent, useState } from "react";
 import CircleCheckedFilled from '@mui/icons-material/CheckCircle';
+import { CheckBox } from "@mui/icons-material";
 
 interface todoProps
 {
     todoText: string;
-    checked: boolean;
+    deleteTodo: (todoDeleteTodo:string) => void;
+    todoCount: number;
 }
 
-export function Todo(props:todoProps)
+const checkStyle = {
+    '&.MuiButtonBase-root':{
+        color: "var(--blue-300)",
+        transition: "all 0.50s ease-in"
+    },
+    '&.Mui-checked': {
+            color: "var(--purple-300)",
+            transition: "all 0.50s ease-in"
+    }
+}
+
+
+export function Todo(content:todoProps)
 {
     const [checked, setCheckedState] = useState(false);
+    let checkboxesChecked:NodeListOf<HTMLInputElement> = document.querySelectorAll('input:checked');
+    let checkBoxesCount = checkboxesChecked.length;
+    var tasksDone = document.getElementById("tasksDone") as HTMLSpanElement | null;
+
     function handleChange(event:ChangeEvent<HTMLInputElement>) 
     {
         setCheckedState(event.target.checked);
     }
+
+    if (tasksDone != null)
+        tasksDone.innerHTML = checkBoxesCount.toString() + " de " + content.todoCount.toString();
+
+    function handleDeleteComment()
+    {
+        content.deleteTodo(content.todoText);
+    }
+
     return (
         <main className={styles.todo}>
              <div className={styles.todoContent}>
-                <Checkbox
-                    icon={<RadioButtonUncheckedRoundedIcon />}
+                <Checkbox 
+                    name={content.todoText}
+                    icon={<RadioButtonUncheckedRoundedIcon/>}
                     checked={checked}
                     onChange={handleChange}
                     checkedIcon={< CircleCheckedFilled /> }
-                    sx={{color: "var(--blue-210)",
-                        '&.Mui-checked': {
-                          color: "var(--purple-300)",
-                          transition: "all 0.5s ease-in"
-                        },}}
-                    />
-                <span className={checked ? styles.done : styles.undone} id="teste">Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</span>
-             </div>
-            <button>
-                <Trash size={18}/>
-            </button>
+                    sx={checkStyle}
+                />
+                <span className={checked ? styles.done : styles.undone} >{content.todoText}</span>
+            </div>
+                <button onClick={handleDeleteComment}>
+                    <Trash size={18}/>
+                </button>
         </main>
     )
 }
